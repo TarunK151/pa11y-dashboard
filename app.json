@@ -1,0 +1,6 @@
+{
+    "name": "Accessibility test",
+    "description": "Accessibility testing with Pa11ly",
+    "repository": "https://github.com/TarunK151/pa11y-dashboard",
+    "keywords": ["node", "express", "pa11ly"]
+  }
