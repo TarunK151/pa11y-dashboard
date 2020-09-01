@@ -25,7 +25,7 @@ if (fs.existsSync(jsonPath)) {
 	module.exports = require(jsPath);
 } else {
 	module.exports = {
-		port: Number(env('PORT', '4000')),
+		port: Number(process.env.PORT || 3000),
 		noindex: env('NOINDEX', 'true') === 'true',
 		readonly: env('READONLY', 'false') === 'true',
 
