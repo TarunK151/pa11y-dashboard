@@ -49,7 +49,6 @@
   },
   "scripts": {
     "heroku-postbuild": "npm install",
-    "start": "node index.js",
-    "test": "make ci"
+    "start": "node index.js"
   }
 }
