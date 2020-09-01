@@ -10,3 +10,6 @@ npm-debug.log
 
 # JetBrains IDE
 .idea
+
+# vs code
+.vscode
