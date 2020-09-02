@@ -6,17 +6,5 @@
     "node",
     "express",
     "pa11ly"
-  ],
-  "environments": {
-    "test": {
-      "buildpacks": [
-        {
-          "url": "heroku/google-chrome"
-        },
-        {
-          "url": "heroku/nodejs"
-        }
-      ]
-    }
-  }
+  ]
 }
