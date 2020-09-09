@@ -58,6 +58,10 @@ function route(app) {
 			const originalActions = request.body.actions;
 			const originalHeaders = request.body.headers;
 			request.body.ignore = request.body.ignore || [];
+			request.body.tilecolor = request.body.tilecolor || undefined,
+			request.body.textcolor = request.body.textcolor || undefined,
+			request.body.imageurl = request.body.imageurl || undefined,
+			request.body.theme = request.body.theme || undefined,
 			request.body.timeout = request.body.timeout || undefined;
 			request.body.wait = request.body.wait || undefined;
 			if (request.body.actions) {
@@ -81,6 +85,10 @@ function route(app) {
 					task.name = request.body.name;
 					task.ignore = request.body.ignore;
 					task.timeout = request.body.timeout;
+					task.tilecolor = request.body.tilecolor,
+					task.textcolor = request.body.textcolor,
+					task.imageurl = request.body.imageurl,
+					task.theme = request.body.theme,
 					task.wait = request.body.wait;
 					task.actions = originalActions;
 					task.username = request.body.username;

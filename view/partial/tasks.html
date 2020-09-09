@@ -18,42 +18,78 @@ along with Pa11y Dashboard.  If not, see <http://www.gnu.org/licenses/>.
 <ul class="list-unstyled clearfix crunch-bottom">
 
 	{{#unless readonly}}
-	        <li class="col-md-4 col-sm-6 task-card add-task">
-			<a class="well task-card-link crunch-bottom" data-role="add-task" href="/new" data-test="add-task">
-				<p class="h3 crunch">Add new URL</p>
-				<p class="supersize-me crunch">+</p>
-			</a>
-		</li>
+	<li class="col-md-4 col-sm-6 task-card add-task">
+		<a class="well task-card-link crunch-bottom" data-role="add-task" href="/new" data-test="add-task">
+			<p class="h3 crunch">Add new URL</p>
+			<p class="supersize-me crunch">+</p>
+		</a>
+	</li>
 	{{/unless}}
 	{{#each tasks}}
-		<li class="col-md-4 col-sm-6 task-card" data-test="task" data-role="task" data-keywords="{{lowercase name}} {{lowercase standard}} {{simplify-url url}}">
-			<a class="well task-card-link crunch-bottom" title="Details for URL {{simplify-url url}}" href="{{href}}">
-				<p class="h3">{{name}}</p>
+	<li class="col-md-4 col-sm-6 task-card" data-test="task" data-role="task"
+		data-keywords="{{lowercase name}} {{lowercase standard}} {{simplify-url url}}">
+		{{#if tilecolor}}
+		<a class="bt-task-card-link crunch-bottom" style="background-color: {{tilecolor}};"
+			title="Details for URL {{simplify-url url}}" href="{{href}}">
+			{{else}}
+			<a class="bt-task-card-link crunch-bottom" style="background-color: paleturquoise;"
+				title="Details for URL {{simplify-url url}}" href="{{href}}">
+				{{/if}}
+				<div class="container2">
+					{{#if textcolor}}
+					<p class="h3" style="color: {{textcolor}};">{{name}}</p>
+					{{else}}
+					<p class="h3">{{name}}</p>
+					{{/if}}
+					{{#if imageurl}}
+					<img src="{{imageurl}}" alt="bt logo" class="iconDetails">
+					{{/if}}
+					{{#if svgcode}}
+					<svg class="iconDetails" viewBox="11.49 0.466 27.905 49.043" xmlns="http://www.w3.org/2000/svg">{{svgcode}}</svg>
+					{{/if}}
+				</div>
+				{{#if textcolor}}
+				<p class="h5" style="color: {{textcolor}};">({{standard}})</p>
+				{{else}}
 				<p class="h5">({{standard}})</p>
+				{{/if}}
 				{{#if lastResult}}
 				<ul class="clearfix list-unstyled floated-list task-stats">
 					{{#lastResult}}
-						<li class="danger" title="Number of errors ({{count.error}})">{{count.error}}<span class="stat-type">Errors</span></li>
-						<li class="warning" title="Number of warnings ({{count.warning}})">{{count.warning}}<span class="stat-type">Warnings</span></li>
-						<li class="info last" title="Number of notices ({{count.notice}})">{{count.notice}}<span class="stat-type">Notices</span></li>
+					<li class="danger" title="Number of errors ({{count.error}})">{{count.error}}<span
+							class="stat-type">Errors</span></li>
+					<li class="warning" title="Number of warnings ({{count.warning}})">{{count.warning}}<span
+							class="stat-type">Warnings</span></li>
+					<li class="info last" title="Number of notices ({{count.notice}})">{{count.notice}}<span
+							class="stat-type">Notices</span></li>
 					{{/lastResult}}
 				</ul>
-				Last run {{date-format lastResult.date format="DD MMM YYYY"}}
+				{{#if textcolor}}
+				<p style="color: {{textcolor}};">Last run {{date-format lastResult.date format="DD MMM YYYY"}}</p>
 				{{else}}
-					<p class="no-results">No results</p>
+				<p >Last run {{date-format lastResult.date format="DD MMM YYYY"}}</p>
+				{{/if}}
+				{{else}}
+				{{#if textcolor}}
+				<p style="color: {{textcolor}};" class="no-results">No results</p>
+				{{else}}
+				<p class="no-results">No results</p>
+				{{/if}}
 				{{/if}}
 			</a>
+
 			{{#unless ../readonly}}
-				<div class="btn-group options-button text-right">
-					<button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown"><span class="sr-only">Options</span><span class="glyphicon glyphicon-cog"></span></button>
-					<ul class="dropdown-menu pull-right" role="menu">
-						<li><a href="{{href}}/edit">Edit this task</a></li>
-						<li><a href="{{href}}/delete">Delete this task</a></li>
-						<li class="divider"></li>
-						<li><a href="{{href}}/run" data-test="run-task">Run Pa11y</a></li>
-					</ul>
-				</div>
+			<div class="btn-group options-button text-right">
+				<button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown"><span
+						class="sr-only">Options</span><span class="glyphicon glyphicon-cog"></span></button>
+				<ul class="dropdown-menu pull-right" role="menu">
+					<li><a href="{{href}}/edit">Edit this task</a></li>
+					<li><a href="{{href}}/delete">Delete this task</a></li>
+					<li class="divider"></li>
+					<li><a href="{{href}}/run" data-test="run-task">Run Pa11y</a></li>
+				</ul>
+			</div>
 			{{/unless}}
-		</li>
+	</li>
 	{{/each}}
 </ul>

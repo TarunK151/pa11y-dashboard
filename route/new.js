@@ -55,6 +55,10 @@ function route(app) {
 
 		const newTask = {
 			name: request.body.name,
+			tilecolor: request.body.tilecolor || undefined,
+			textcolor: request.body.textcolor || undefined,
+			imageurl: request.body.imageurl || undefined,
+			theme: request.body.theme || undefined,
 			url: request.body.url,
 			standard: request.body.standard,
 			ignore: request.body.ignore || [],
