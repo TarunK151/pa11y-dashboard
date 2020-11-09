@@ -50,6 +50,7 @@
     "uglify-js": "^3.9.1"
   },
   "scripts": {
+    "heroku-prebuild": "npm install grunt && npm install",
     "heroku-postbuild": "npm install",
     "start": "node index.js"
   }
